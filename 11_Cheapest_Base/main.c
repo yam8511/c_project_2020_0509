@@ -12,14 +12,14 @@ int main()
 
     fgets(buf, sizeof(buf), stdin);
     in1 = atoi(buf);
-    // cin >> in1; //輸入測資組數
+
     while (c <= in1)
     {
         printf("Case %d:\n", c);
-        // cout << "Case " << c << ":" << endl; //輸出第幾組
+
 
         i = 0;
-        while (i < 36) //輸入花費
+        while (i < 36)
         {
             fgets(buf, sizeof(buf), stdin);
             if ((pos = strchr(buf, '\n')) != NULL)
@@ -31,33 +31,33 @@ int main()
                 pch = strtok(NULL, delim);
                 i++;
             }
-            // cin >> cost[i];
+
         }
 
         fgets(buf, sizeof(buf), stdin);
         n = atoi(buf);
-        // cin >> n; //輸入數字數量
+
         while (n--)
         {
             fgets(buf, sizeof(buf), stdin);
             in2 = atoi(buf);
-            // cin >> in2; //輸入數字
 
-            int min = 0, de[37] = {0}; //歸零
 
-            for (i = 2; i <= 36; i++) //計算每個進位的價錢
+            int min = 0, de[37] = {0};
+
+            for (i = 2; i <= 36; i++)
             {
-                cn1 = in2;   //原本的數字不能動所以用其他變數
-                int sum = 0; //歸零
+                cn1 = in2;
+                int sum = 0;
 
-                while (cn1 > 0) //利用短除法將十進位轉成任何進位
+                while (cn1 > 0)
                 {
-                    re = cn1 % i;         //取得餘數就是該進位要轉的數字
-                    sum = sum + cost[re]; //計算價錢
+                    re = cn1 % i;
+                    sum = sum + cost[re];
                     cn1 = cn1 / i;
                 }
 
-                if (min == 0 || sum <= min) //紀錄最少的花費
+                if (min == 0 || sum <= min)
                 {
                     de[i] = sum;
                     min = sum;
@@ -65,24 +65,24 @@ int main()
             }
 
             printf("Cheapest base(s) for number %d:", in2);
-            // cout << "Cheapest base(s) for number " << in2 << ":"; //輸出
+
 
             for (i = 2; i <= 36; i++)
             {
-                if (de[i] == min) //輸出花費最少的進位
+                if (de[i] == min)
                 {
                     printf(" %d", i);
-                    // cout << " " << i;
+
                 }
             }
             printf("\n");
-            // cout << endl;
+
         }
 
-        if (c < in1) //最後一組測資不用換行
+        if (c < in1)
         {
             printf("\n");
-            // cout << endl;
+
         }
         c++;
     }

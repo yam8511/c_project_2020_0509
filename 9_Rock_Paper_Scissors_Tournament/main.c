@@ -13,14 +13,24 @@ int main()
 	int n, k;
 	int i, j, game, p1, p2;
 	char f1[50], f2[50];
-	while (scanf("%d %d", &n, &k) == 2)
+	char str[50];
+
+	while (1)
 	{
+
+		fgets(str, sizeof(str), stdin);
+		sscanf(str, "%d %d\n", &n, &k);
+
+		if (n == 0)
+			break;
+
 		for (i = 1; i <= n; i++)
 			p[i].win = 0, p[i].lose = 0;
 		game = k * n * (n - 1) / 2;
 		while (game--)
 		{
-			scanf("%d %s %d %s", &p1, f1, &p2, f2);
+			fgets(str, sizeof(str), stdin);
+			sscanf(str, "%d %s %d %s\n", &p1, f1, &p2, f2);
 			int kind1, kind2;
 			if (f1[0] == 'r')
 				kind1 = 1;
